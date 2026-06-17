@@ -1,0 +1,4 @@
+DirectoryIndex index.php
+
+# Chặn liệt kê thư mục, ưu tiên index.php điều hướng portal
+Options -Indexes

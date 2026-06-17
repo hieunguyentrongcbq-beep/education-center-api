@@ -1,0 +1,16 @@
+# Word/Office temp lock files
+~$*
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Editor/IDE
+.vscode/
