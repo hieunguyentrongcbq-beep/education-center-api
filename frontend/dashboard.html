@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduCenter — Dashboard Quản lý</title>
+    <meta name="description" content="Dashboard quản lý trung tâm đào tạo - Tổng quan hệ thống">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <span class="logo-icon">🎓</span>
+                <span class="logo-text">EduCenter</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebar-toggle" title="Thu gọn">◀</button>
+        </div>
+
+        <nav class="sidebar-nav">
+            <div class="nav-section-label" data-i18n="nav_overview">Tổng quan</div>
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <span class="nav-icon">📊</span>
+                <span class="nav-label" data-i18n="nav_dashboard">Dashboard</span>
+            </a>
+
+            <div class="nav-section-label" data-i18n="nav_academic">Quản lý học vụ</div>
+            <a href="#" class="nav-item" data-page="courses">
+                <span class="nav-icon">📚</span>
+                <span class="nav-label" data-i18n="nav_courses">Khóa học</span>
+            </a>
+            <a href="#" class="nav-item" data-page="classes">
+                <span class="nav-icon">🏫</span>
+                <span class="nav-label" data-i18n="nav_classes">Lớp học</span>
+            </a>
+            <a href="#" class="nav-item" data-page="students">
+                <span class="nav-icon">🎓</span>
+                <span class="nav-label" data-i18n="nav_students">Học viên</span>
+            </a>
+            <a href="#" class="nav-item" data-page="teachers">
+                <span class="nav-icon">👨‍🏫</span>
+                <span class="nav-label" data-i18n="nav_teachers">Giáo viên</span>
+            </a>
+            <a href="#" class="nav-item" data-page="schedules">
+                <span class="nav-icon">📅</span>
+                <span class="nav-label" data-i18n="nav_schedules">Lịch học</span>
+            </a>
+
+            <div class="nav-section-label" data-i18n="nav_reports_section">Báo cáo</div>
+            <a href="#" class="nav-item" data-page="reports">
+                <span class="nav-icon">📈</span>
+                <span class="nav-label" data-i18n="nav_reports">Thống kê & Báo cáo</span>
+            </a>
+
+            <div class="nav-section-label" data-i18n="nav_system">Hệ thống</div>
+            <a href="#" class="nav-item" data-page="notifications">
+                <span class="nav-icon">🔔</span>
+                <span class="nav-label" data-i18n="nav_notifications">Thông báo</span>
+                <span class="nav-badge" id="notif-badge" style="display:none">0</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-user">
+            <div class="user-avatar" id="user-avatar">AD</div>
+            <div class="user-info">
+                <div class="user-name" id="user-name">Admin</div>
+                <div class="user-role" id="user-role">SUPER_ADMIN</div>
+            </div>
+            <button class="btn-logout" id="btn-logout" title="Đăng xuất">⏻</button>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="main-content">
+        <!-- TOP BAR -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-btn" id="mobile-toggle">☰</button>
+                <div class="breadcrumb">
+                    <span id="page-title">Dashboard</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="text" placeholder="Tìm kiếm..." id="global-search" data-i18n-placeholder="search_placeholder">
+                </div>
+                <button class="lang-btn" id="lang-btn" title="Switch language">
+                    <span class="lang-flag" id="lang-flag">🇻🇳</span>
+                    <span class="lang-text" id="lang-text">VI</span>
+                </button>
+                <div class="time-display" id="time-display">--:--</div>
+            </div>
+        </header>
+
+        <!-- PAGE CONTENT -->
+        <div class="page-wrapper" id="page-content">
+            <!-- Dashboard Page -->
+            <div id="page-dashboard" class="page active">
+                <div class="stats-grid" id="stats-grid">
+                    <div class="stat-card" style="--accent-color: #6366f1">
+                        <div class="stat-icon">📚</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="stat-courses">—</div>
+                            <div class="stat-label">Khóa học</div>
+                        </div>
+                        <div class="stat-trend up">↑</div>
+                    </div>
+                    <div class="stat-card" style="--accent-color: #06b6d4">
+                        <div class="stat-icon">🏫</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="stat-classes">—</div>
+                            <div class="stat-label">Lớp học</div>
+                        </div>
+                        <div class="stat-trend up">↑</div>
+                    </div>
+                    <div class="stat-card" style="--accent-color: #10b981">
+                        <div class="stat-icon">👨‍🏫</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="stat-teachers">—</div>
+                            <div class="stat-label">Giáo viên</div>
+                        </div>
+                        <div class="stat-trend up">↑</div>
+                    </div>
+                    <div class="stat-card" style="--accent-color: #f59e0b">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="stat-revenue">—</div>
+                            <div class="stat-label">Doanh thu</div>
+                        </div>
+                        <div class="stat-trend up">↑</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>📈 Doanh thu theo tháng</h3>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="revenue-chart" height="220"></canvas>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>🏫 Tỉ lệ lấp đầy lớp học</h3>
+                        </div>
+                        <div class="card-body" id="fill-rate-list">
+                            <div class="loading-placeholder">Đang tải...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-top: 24px;">
+                    <div class="card-header">
+                        <h3>🏫 Danh sách lớp học gần đây</h3>
+                    </div>
+                    <div class="card-body">
+                        <div id="recent-classes-table"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Courses Page -->
+            <div id="page-courses" class="page">
+                <div class="page-actions">
+                    <h2 class="page-heading">📚 Quản lý Khóa học</h2>
+                    <button class="btn btn-primary" id="btn-add-course">+ Thêm khóa học</button>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div id="courses-table"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classes Page -->
+            <div id="page-classes" class="page">
+                <div class="page-actions">
+                    <h2 class="page-heading">🏫 Quản lý Lớp học</h2>
+                    <button class="btn btn-primary" id="btn-add-class">+ Thêm lớp học</button>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div id="classes-table"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teachers Page -->
+            <div id="page-teachers" class="page">
+                <div class="page-actions">
+                    <h2 class="page-heading">👨‍🏫 Quản lý Giáo viên</h2>
+                    <button class="btn btn-primary" id="btn-add-teacher">+ Thêm giáo viên</button>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div id="teachers-table"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Students Page -->
+            <div id="page-students" class="page">
+                <div class="page-actions">
+                    <h2 class="page-heading">🎓 Quản lý Học viên</h2>
+                    <button class="btn btn-primary" id="btn-add-student">+ Thêm học viên</button>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div id="students-table"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Schedules Page -->
+            <div id="page-schedules" class="page">
+                <div class="page-actions">
+                    <h2 class="page-heading">📅 Quản lý Lịch học</h2>
+                </div>
+                <div class="card card-filter">
+                    <div class="filter-row" style="flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:12px">
+                        <label style="font-size:13px;color:var(--text-muted);white-space:nowrap">Chế độ:</label>
+                        <select id="sched-view-mode" style="min-width:160px;background:#1e2030;color:#e2e8f0;border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:14px">
+                            <option value="student">👨‍🎓 Theo học viên</option>
+                            <option value="teacher">👨‍🏫 Theo giáo viên</option>
+                        </select>
+                    </div>
+                    <div id="sched-student-panel" class="filter-row" style="flex-wrap:wrap;gap:12px;align-items:center">
+                        <label style="font-size:13px;color:var(--text-muted);white-space:nowrap">Học viên:</label>
+                        <select id="sched-student-id" style="flex:1;max-width:260px;background:#1e2030;color:#e2e8f0;border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:14px">
+                            <option value="">-- Chọn học viên --</option>
+                        </select>
+                        <label style="font-size:13px;color:var(--text-muted);white-space:nowrap">Lớp (tùy chọn):</label>
+                        <select id="schedule-class-id" style="flex:1;max-width:320px;background:#1e2030;color:#e2e8f0;border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:14px">
+                            <option value="">Tất cả lớp đã đăng ký</option>
+                        </select>
+                        <button class="btn btn-secondary" id="btn-load-student-schedule">🔍 Xem lịch học</button>
+                        <button type="button" class="btn btn-sm btn-secondary" id="btn-load-schedule-detail" title="Điểm danh, phân công GV theo lớp">⚙ Chi tiết lớp</button>
+                    </div>
+                    <div id="sched-teacher-panel" class="filter-row" style="display:none;flex-wrap:wrap;gap:12px;align-items:center">
+                        <label style="font-size:13px;color:var(--text-muted);white-space:nowrap">Giáo viên:</label>
+                        <select id="sched-teacher-id" style="flex:1;max-width:320px;background:#1e2030;color:#e2e8f0;border:1px solid var(--border);border-radius:8px;padding:8px 12px;font-size:14px">
+                            <option value="">-- Chọn giáo viên --</option>
+                        </select>
+                        <button class="btn btn-secondary" id="btn-load-teacher-schedule">🔍 Xem lịch dạy</button>
+                    </div>
+                </div>
+                <div class="card" style="padding:0">
+                    <div id="schedules-table" style="padding:16px"><p style="color:var(--text-muted);text-align:center;padding:32px 0">Chọn học viên và lớp học, sau đó nhấn 🔍 Xem lịch</p></div>
+                </div>
+            </div>
+
+            <!-- Enrollments Page -->
+            <div id="page-enrollments" class="page">
+                <div class="page-actions">
+                    <h2 class="page-heading">📝 Đăng ký & Học phí</h2>
+                    <div style="display:flex;gap:8px">
+                        <button class="btn btn-primary" id="btn-add-enrollment">+ Đăng ký học</button>
+                    </div>
+                </div>
+                <div class="enroll-filter-bar">
+                    <span class="filter-label">🔽 Lọc:</span>
+                    <div class="filter-group">
+                        <label class="filter-tag">Thanh toán</label>
+                        <select id="enroll-filter-pay" class="filter-select">
+                            <option value="">Tất cả</option>
+                            <option value="UNPAID">⚠ Chưa TT</option>
+                            <option value="PAID">✓ Đã TT</option>
+                            <option value="REFUNDED">↩ Hoàn tiền</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label class="filter-tag">Trạng thái</label>
+                        <select id="enroll-filter-status" class="filter-select">
+                            <option value="">Tất cả</option>
+                            <option value="ACTIVE">📗 Đang học</option>
+                            <option value="DROPPED">📕 Đã nghỉ</option>
+                            <option value="COMPLETED">📘 Hoàn thành</option>
+                        </select>
+                    </div>
+                    <button class="btn-filter-apply" id="btn-filter-enrollment">🔍 Lọc</button>
+                    <button class="btn-filter-reset" id="btn-reset-enrollment">✕ Bỏ lọc</button>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div id="enrollments-table"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attendance Page (merged into schedules) -->
+            <div id="page-attendance" class="page" style="display:none!important">
+                <div class="page-actions">
+                    <h2 class="page-heading">✅ Điểm danh</h2>
+                    <button class="btn btn-primary" id="btn-add-attendance">+ Ghi điểm danh</button>
+                </div>
+                <div class="card card-filter">
+                    <div class="filter-row">
+                        <label>Lớp (ID):</label>
+                        <input type="number" id="att-class-id" placeholder="ID lớp..." min="1">
+                        <label>Ngày:</label>
+                        <input type="date" id="att-date">
+                        <button class="btn btn-secondary" id="btn-load-attendance">🔍 Xem</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div id="attendance-table"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tuitions page removed - merged into enrollments -->
+
+            <!-- Reports Page -->
+            <div id="page-reports" class="page">
+                <h2 class="page-heading">📈 Thống kê & Báo cáo</h2>
+                <div class="reports-grid">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>💰 Doanh thu theo tháng</h3>
+                            <a id="export-csv-btn" href="#" class="btn btn-sm btn-secondary">⬇ Xuất CSV</a>
+                        </div>
+                        <div class="card-body" id="revenue-report-table"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>👨‍🏫 Giờ dạy giáo viên</h3>
+                            <div class="filter-inline">
+                                <input type="month" id="teacher-hours-month" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color:#f1f5f9; padding:6px 10px; border-radius:8px;">
+                                <button class="btn btn-sm btn-secondary" id="btn-load-teacher-hours">Xem</button>
+                            </div>
+                        </div>
+                        <div class="card-body" id="teacher-hours-table"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>🎓 Thống kê học viên</h3>
+                        </div>
+                        <div class="card-body" id="students-report-table"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Page -->
+            <div id="page-notifications" class="page">
+                <h2 class="page-heading">🔔 Thông báo</h2>
+                <div class="card">
+                    <div class="card-body" id="notifications-list">
+                        <div class="loading-placeholder">Đang tải thông báo...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="modal">
+            <div class="modal-header">
+                <h3 id="modal-title">Modal</h3>
+                <button class="modal-close" id="modal-close">✕</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="modal-cancel">Hủy</button>
+                <button class="btn btn-primary" id="modal-submit">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="js/api.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
