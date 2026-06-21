@@ -35,7 +35,7 @@ CREATE TABLE `attendance` (
   `attendance_status` enum('PRESENT','ABSENT','LATE','EXCUSED') DEFAULT 'PRESENT',
   `tinh_luong` tinyint(1) DEFAULT '0',
   `note` varchar(300) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `attendance`
@@ -179,7 +179,7 @@ CREATE TABLE `audit_logs` (
   `entity_name` varchar(60) DEFAULT NULL,
   `entity_id` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `audit_logs`
@@ -236,7 +236,7 @@ CREATE TABLE `classes` (
   `end_date` date NOT NULL,
   `status` enum('UPCOMING','ONGOING','COMPLETED','CANCELLED') DEFAULT 'UPCOMING',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `classes`
@@ -267,7 +267,7 @@ CREATE TABLE `classrooms` (
   `capacity` int NOT NULL,
   `location` varchar(200) DEFAULT NULL,
   `status` enum('ACTIVE','INACTIVE') DEFAULT 'ACTIVE'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `classrooms`
@@ -293,7 +293,7 @@ CREATE TABLE `class_plans` (
   `target_student_count` int DEFAULT '20',
   `status` enum('DRAFT','APPROVED','CANCELLED') DEFAULT 'DRAFT',
   `created_by` int DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `class_plans`
@@ -328,7 +328,7 @@ CREATE TABLE `courses` (
   `tuition_fee` decimal(12,2) NOT NULL,
   `status` enum('ACTIVE','INACTIVE') DEFAULT 'ACTIVE',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `courses`
@@ -354,7 +354,7 @@ CREATE TABLE `enrollments` (
   `enrollment_date` date NOT NULL,
   `payment_status` enum('UNPAID','PAID','REFUNDED') DEFAULT 'UNPAID',
   `status` enum('ACTIVE','DROPPED','COMPLETED') DEFAULT 'ACTIVE'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `enrollments`
@@ -399,7 +399,7 @@ CREATE TABLE `grades` (
   `score` decimal(5,2) DEFAULT NULL,
   `comment` text,
   `graded_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `grades`
@@ -434,7 +434,7 @@ CREATE TABLE `leave_requests` (
   `status` enum('PENDING','APPROVED','REJECTED') DEFAULT 'PENDING',
   `reviewed_by` int DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `leave_requests`
@@ -462,7 +462,7 @@ CREATE TABLE `notifications` (
   `receiver_id` int NOT NULL,
   `is_read` tinyint(1) DEFAULT '0',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `notifications`
@@ -551,7 +551,7 @@ CREATE TABLE `payrolls` (
   `teaching_hours` decimal(6,1) DEFAULT '0.0',
   `salary_amount` decimal(12,2) DEFAULT '0.00',
   `payment_status` enum('PENDING','PAID') DEFAULT 'PENDING'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `payrolls`
@@ -577,7 +577,7 @@ CREATE TABLE `roles` (
   `id` int NOT NULL,
   `role_name` varchar(60) NOT NULL,
   `description` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `roles`
@@ -605,7 +605,7 @@ CREATE TABLE `schedules` (
   `schedule_type` enum('REGULAR','EXAM','MAKEUP','EXTRA') DEFAULT 'REGULAR',
   `exam_label` varchar(100) DEFAULT NULL,
   `exam_supervisor` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `schedules`
@@ -774,7 +774,7 @@ CREATE TABLE `semesters` (
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `status` enum('UPCOMING','ONGOING','COMPLETED') DEFAULT 'UPCOMING'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `semesters`
@@ -807,7 +807,7 @@ CREATE TABLE `students` (
   `date_of_birth` date DEFAULT NULL,
   `parent_phone` varchar(20) DEFAULT NULL,
   `status` enum('ACTIVE','INACTIVE','GRADUATED') DEFAULT 'ACTIVE'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `students`
@@ -841,7 +841,7 @@ CREATE TABLE `student_evaluations` (
   `teacher_comment` text,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `student_evaluations`
@@ -873,7 +873,7 @@ CREATE TABLE `submissions` (
   `file_path` varchar(500) DEFAULT NULL,
   `submitted_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `status` enum('PENDING','GRADED') DEFAULT 'PENDING'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `submissions`
@@ -904,7 +904,7 @@ CREATE TABLE `surveys` (
   `class_id` int NOT NULL,
   `title` varchar(200) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `surveys`
@@ -928,7 +928,7 @@ CREATE TABLE `survey_responses` (
   `rating` tinyint NOT NULL,
   `comment` text,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `survey_responses`
@@ -957,7 +957,7 @@ CREATE TABLE `teachers` (
   `teacher_type` enum('FULL_TIME','VISITING') DEFAULT 'FULL_TIME',
   `standard_hours` decimal(5,1) DEFAULT '40.0',
   `status` enum('ACTIVE','INACTIVE') DEFAULT 'ACTIVE'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `teachers`
@@ -986,7 +986,7 @@ CREATE TABLE `teacher_assignments` (
   `assigned_by` int DEFAULT NULL,
   `assigned_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `assignment_status` enum('PENDING','CONFIRMED','CANCELLED') DEFAULT 'CONFIRMED'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `teacher_assignments`
@@ -1034,7 +1034,7 @@ CREATE TABLE `tuition_payments` (
   `payment_method` varchar(40) DEFAULT NULL,
   `payment_status` enum('UNPAID','COMPLETED','REFUNDED') DEFAULT 'UNPAID',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `tuition_payments`
@@ -1083,7 +1083,7 @@ CREATE TABLE `users` (
   `status` enum('ACTIVE','INACTIVE') DEFAULT 'ACTIVE',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
@@ -1115,7 +1115,7 @@ INSERT INTO `users` (`id`, `full_name`, `email`, `password_hash`, `phone`, `stat
 CREATE TABLE `user_roles` (
   `user_id` int NOT NULL,
   `role_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `user_roles`
