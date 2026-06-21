@@ -1,0 +1,14 @@
+flow
+người dùng
+public/index.php
+router -> classcontrol.php@index
+classcontrol.php
+classmodel get
+mysql
+classmodel return
+controller.php trasmission
+view 
+browser
+
+URL → Controller → Model → Database → Model → Controller → View → User
+
